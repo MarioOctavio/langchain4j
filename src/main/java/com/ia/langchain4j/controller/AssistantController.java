@@ -22,10 +22,12 @@ public class AssistantController {
     }
 
     @PostMapping
-    public String askAssistant(@RequestBody String userMessage) {
+    public String askAssistant(@RequestBody(required = false) String userMessage) {
         String finalMessage = "";
         if(StringUtils.hasText(userMessage)){
             finalMessage =  userMessage.concat(metricService.fetchPrometheusMetrics());
+        } else {
+            finalMessage = metricService.fetchPrometheusMetrics();
         }
 
         Result<String> result = assistantAiService.handleRequest(finalMessage);
