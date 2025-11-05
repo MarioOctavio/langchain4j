@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: langchain4j
+
+gemini:
+  api-key: INFORME_SUA_API_KEY_AQUI
+  model: gemini-2.5-flash
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, metrics, info
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  metrics:
+    enabled: true
